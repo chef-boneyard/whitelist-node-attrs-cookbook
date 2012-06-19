@@ -16,17 +16,6 @@
 # limitations under the License.
 #
 
-# We use a ruby block because we want this to happen at run-time (not compile
-# time)
-#
-# The whitelist itself are node attributes, so you can build it up easily from
-# nodes/roles as needed.
-ruby_block "filter node attributes" do
-  block do
-    whitelist = node[:whitelist].to_hash
-    node.default_attrs = Whitelist.filter(node.default_attrs, whitelist)
-    node.normal_attrs = Whitelist.filter(node.normal_attrs, whitelist)
-    node.override_attrs = Whitelist.filter(node.override_attrs, whitelist)
-    node.automatic_attrs = Whitelist.filter(node.automatic_attrs, whitelist)
-  end
-end
+# All the action takes place in libraries/whitelist.rb - we wrap 
+# up node.save to ensure that no matter what, we whitelist what
+# goes up to the server.

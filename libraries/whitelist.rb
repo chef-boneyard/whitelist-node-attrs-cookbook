@@ -54,3 +54,19 @@ class Whitelist
   end
 end
 
+class Chef
+  class Node
+    alias_method :old_save, :save
+
+    def save
+      Chef::Log.info("Whitelisting node attributes")
+      whitelist = self[:whitelist].to_hash
+      self.default_attrs = Whitelist.filter(self.default_attrs, whitelist)
+      self.normal_attrs = Whitelist.filter(self.normal_attrs, whitelist)
+      self.override_attrs = Whitelist.filter(self.override_attrs, whitelist)
+      self.automatic_attrs = Whitelist.filter(self.automatic_attrs, whitelist)
+      old_save
+    end
+  end
+end
+
