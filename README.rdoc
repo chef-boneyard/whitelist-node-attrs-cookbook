@@ -32,4 +32,7 @@ This cookbook honors the fact that attributes are set at different precedence le
 
 = USAGE:
 
-Upload the cookbook, and make sure that whitelist-node-attrs is *last* in the run list. 
+Upload the cookbook, and make sure that it is included as a dependency in another cookbooks
+metadata, or that the recipe (which does nothing) is included in the role.
+
+Whenever node.save is called, the whitelist will be applied. 
