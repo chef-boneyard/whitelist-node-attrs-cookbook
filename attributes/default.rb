@@ -25,6 +25,7 @@ node.default[:whitelist] = {
   "macaddress" => true,
   "platform" => true,
   "platform_version" => true,
+  "ohai_time" => true,
   "kernel" => {
     "machine" => true,
     "name" => true,
