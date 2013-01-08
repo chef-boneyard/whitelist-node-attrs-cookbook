@@ -26,6 +26,7 @@ node.default[:whitelist] = {
   "platform" => true,
   "ohai_time" => true,
   "platform_version" => true,
+  "ohai_time" => true,
   "kernel" => {
     "machine" => true,
     "name" => true,
