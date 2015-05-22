@@ -6,6 +6,12 @@ node attributes that should be saved on the server. All of the
 attributes are still available throughout the chef run, but only those
 specifically listed will be saved to the server.
 
+### Note: this functionality now exists in Chef core
+[Whitelist attributes](https://docs.chef.io/attributes.html#whitelist-attributes)
+are supported in modern versions of Chef and are the recommended 
+practice for managing node attributes.
+
+
 Requirements
 ============
 
