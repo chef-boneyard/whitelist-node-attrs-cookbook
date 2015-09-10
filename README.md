@@ -1,5 +1,9 @@
-Description
-===========
+whitelist-node-attrs Cookbook
+==================
+
+[![Build Status](https://travis-ci.org/chef-cookbooks/whitelist-node-attrs.svg?branch=master)](http://travis-ci.org/chef-cookbooks/whitelist-node-attrs)
+[![Cookbook Version](https://img.shields.io/cookbook/v/whitelist-node-attrs.svg)](https://supermarket.chef.io/cookbooks/whitelist-node-attrs)
+
 
 This cookbook provides a library that allows you to set a whitelist of
 node attributes that should be saved on the server. All of the
@@ -63,7 +67,7 @@ License and Author
 
 Author:: Adam Jacob (<adam@opscode.com>)
 
-Copyright:: 2011-2012, Opscode, Inc (<legal@opscode.com>)
+Copyright:: 2011-2015, Chef Software, Inc (<legal@chef.io>)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
