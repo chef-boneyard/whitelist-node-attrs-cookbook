@@ -6,9 +6,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -40,15 +40,11 @@ class Whitelist
   #
   # Will drop the entire "map - autohome" tree.
   def self.filter(data, whitelist)
-    if data == nil
-      return nil
-    end
+    return nil if data.nil?
 
-    new_data = data.reject { |key, value| !whitelist.keys.include?(key) }
-    whitelist.each do |k,v|
-      if v.kind_of?(Hash)
-        new_data[k] = filter(new_data[k], v)
-      end
+    new_data = data.reject { |key, _value| !whitelist.keys.include?(key) }
+    whitelist.each do |k, v|
+      new_data[k] = filter(new_data[k], v) if v.is_a?(Hash)
     end
     new_data
   end
@@ -59,14 +55,13 @@ class Chef
     alias_method :old_save, :save
 
     def save
-      Chef::Log.info("Whitelisting node attributes")
+      Chef::Log.info('Whitelisting node attributes')
       whitelist = self[:whitelist].to_hash
-      self.default_attrs = Whitelist.filter(self.default_attrs, whitelist)
-      self.normal_attrs = Whitelist.filter(self.normal_attrs, whitelist)
-      self.override_attrs = Whitelist.filter(self.override_attrs, whitelist)
-      self.automatic_attrs = Whitelist.filter(self.automatic_attrs, whitelist)
+      self.default_attrs = Whitelist.filter(default_attrs, whitelist)
+      self.normal_attrs = Whitelist.filter(normal_attrs, whitelist)
+      self.override_attrs = Whitelist.filter(override_attrs, whitelist)
+      self.automatic_attrs = Whitelist.filter(automatic_attrs, whitelist)
       old_save
     end
   end
 end
-
