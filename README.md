@@ -11,7 +11,7 @@ attributes are still available throughout the chef run, but only those
 specifically listed will be saved to the server.
 
 # DEPRECATION
-This functionality now exists in Chef core therfore this cookbook is no longer necessary.
+This functionality now exists in Chef core therefore this cookbook is no longer necessary.
 [Whitelist attributes](https://docs.chef.io/attributes.html#whitelist-attributes)
 are supported in modern versions of Chef and are the recommended 
 practice for managing node attributes.
